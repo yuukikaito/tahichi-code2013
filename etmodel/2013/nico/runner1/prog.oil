@@ -1,0 +1,125 @@
+/**
+ ******************************************************************************
+ **    FILE NAME : prog.oil
+ **
+ **    ABSTRUCT  : OSEK OIL(OSEK Implementation Language) file for Runner
+ ******************************************************************************
+ **/
+#include "implementation.oil"
+
+CPU ATMEL_AT91SAM7S256
+{
+  OS LEJOS_OSEK
+  {
+    STATUS = EXTENDED;
+    STARTUPHOOK = FALSE;
+    SHUTDOWNHOOK = FALSE;
+    PRETASKHOOK = FALSE;
+    POSTTASKHOOK = FALSE;
+    USEGETSERVICEID = FALSE;
+    USEPARAMETERACCESS = FALSE;
+    USERESSCHEDULER = FALSE;
+  };
+
+  /* Definition of application mode */
+  APPMODE appmode1{};
+
+  /* Definition of OSEK Alarm counter: SysTimerCnt */
+  COUNTER SysTimerCnt
+  {
+    MINCYCLE = 1;
+    MAXALLOWEDVALUE = 10000;
+    TICKSPERBASE = 1;
+  };
+
+  /* Definitions of a periodical task: BalanceTask */
+  TASK BalanceTask
+  {
+    AUTOSTART = FALSE;
+    PRIORITY = 3;
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    STACKSIZE = 512; /* bytes */
+  };
+
+  ALARM task_balance
+  {
+    COUNTER = SysTimerCnt;
+    ACTION = ACTIVATETASK
+    {
+      TASK = BalanceTask;
+    };
+    AUTOSTART = TRUE
+    {
+      APPMODE = appmode1;
+      ALARMTIME = 1;
+      CYCLETIME = 4;
+    };
+  };
+
+  /* Definitions of a periodical task: ActionTask */
+  TASK ActionTask
+  {
+    AUTOSTART = FALSE;
+    PRIORITY = 2;
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    STACKSIZE = 512; /* bytes */
+  };
+
+  ALARM task_action
+  {
+    COUNTER = SysTimerCnt;
+    ACTION = ACTIVATETASK
+    {
+      TASK = ActionTask;
+    };
+    AUTOSTART = TRUE
+    {
+      APPMODE = appmode1;
+      ALARMTIME = 1;
+      CYCLETIME = 40;
+    };
+  };
+
+  /* Definition of background task: DisplayTask */
+  TASK DisplayTask
+  {
+    AUTOSTART = FALSE;
+    PRIORITY = 1; /* lowest priority */
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    STACKSIZE = 512; /* bytes */
+  };
+
+  ALARM task_display
+  {
+    COUNTER = SysTimerCnt;
+    ACTION = ACTIVATETASK
+    {
+      TASK = DisplayTask;
+    };
+    AUTOSTART = TRUE
+    {
+      APPMODE = appmode1;
+      ALARMTIME = 1;
+      CYCLETIME = 500;
+    };
+  };
+
+  ALARM counttimer
+  {
+    COUNTER = SysTimerCnt;
+    ACTION = ALARMCALLBACK
+    {
+      ALARMCALLBACKNAME = "CountTimer";
+    };
+    AUTOSTART = TRUE
+    {
+      ALARMTIME = 1000;
+      CYCLETIME = 10;
+      APPMODE = appmode1;
+    };
+  };
+
+};
