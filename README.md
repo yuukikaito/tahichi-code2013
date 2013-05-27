@@ -1,3 +1,3 @@
 lab_information
 ===============
-test readme
+Information about our research environment is summarized in this github wiki.
