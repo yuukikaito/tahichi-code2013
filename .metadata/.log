@@ -1,0 +1,25 @@
+!SESSION 2013-11-13 13:48:40.415 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ja_JP
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -clean -data C:\cygwin\home\tahichi_ver2.0\MCPW -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.osgi 2 0 2013-11-13 13:48:50.436
+!MESSAGE The plugin "com.sysdeo.eclipse.tomcat" with the version "3.3.0" and location "reference:file:dropins/TomcatLauncher/eclipse/plugins/com.sysdeo.eclipse.tomcat_3.3.0/" is an old style Eclipse 2.0 plugin with no OSGi bundle manifest.  Support for Eclipse 2.0 style plugins will be removed in a future release. Refer to the migration guide for details.
+
+!ENTRY org.eclipse.osgi 2 0 2013-11-13 13:48:50.681
+!MESSAGE The plugin "jp.gr.java_conf.ussiy.app.propedit" with the version "4.8.2" and location "reference:file:dropins/PropertiesEditor/eclipse/plugins/jp.gr.java_conf.ussiy.app.propedit_4.8.2/" is an old style Eclipse 2.0 plugin with no OSGi bundle manifest.  Support for Eclipse 2.0 style plugins will be removed in a future release. Refer to the migration guide for details.
+
+!ENTRY org.eclipse.core.net 1 0 2013-11-13 13:50:05.763
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2013-11-13 13:50:05.807
+!MESSAGE System property http.proxyPort is set to 9666 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2013-11-13 13:50:05.845
+!MESSAGE System property http.proxyHost is set to 127.0.0.1 but should not be set.
+
+!ENTRY org.eclipse.core.net 1 0 2013-11-13 13:50:05.855
+!MESSAGE System property http.proxyPort is set to 9666 but should not be set.
